@@ -17,7 +17,7 @@ app.use("/post",PostRouter)
 
 
 
-app.listen(process.env.PORt,async(err)=>{
+app.listen(process.env.PORT,async(err)=>{
     await sequelize.sync()
     console.log("server is running on port 4500")
 })
