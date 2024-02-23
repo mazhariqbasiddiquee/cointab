@@ -7,45 +7,47 @@ function Home() {
   const [data, setData] = useState([]);
   const [userStatus, setUserStatus] = useState({});
 
-  const fetchUserData = async () => {
-    try {
-      const response = await fetch("https://jsonplaceholder.typicode.com/users");
-      const userData = await response.json();
-      setData(userData);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  const checkUserStatus = async (id) => {
-    try {
-      const response = await fetch(`https://cointab-znde.onrender.com/user/${id}`);
-      const userData = await response.json();
-      setUserStatus(prevStatus => ({
-        ...prevStatus,
-        [id]: !!userData.data
-      }));
-    } catch (error) {
-      console.error(`Error checking user ${id} status:`, error);
-    }
-  };
-
-  const addUser = async (elem) => {
-    try {
-      const response = await fetch("https://cointab-znde.onrender.com/user/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(elem)
+  const fetchUserData = () => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res)
+      })
+      .catch(error => {
+        console.error( error)
       });
-      const responseData = await response.json();
-      console.log(responseData);
+  };
 
-      await fetchUserData();
-    } catch (error) {
-      console.error("Error adding user:", error);
-    }
+  const checkUserStatus = (id) => {
+    fetch(`https://cointab-znde.onrender.com/user/${id}`)
+      .then(response => response.json())
+      .then(userData => {
+        setUserStatus(prevStatus => ({
+          ...prevStatus,
+          [id]: !!userData.data
+        }));
+      })
+      .catch(error => {
+        console.error( error)
+      });
+  };
+
+  const addUser = (elem) => {
+    fetch("https://cointab-znde.onrender.com/user/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(elem)
+    })
+      .then((res) => res.json())
+      .then((data) => {
+    
+        fetchUserData();
+      })
+      .catch(error => {
+        console.error( error)
+      });
   };
 
   const handleAllUserClick = () => {
