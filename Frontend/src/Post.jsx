@@ -27,7 +27,7 @@ function POST() {
       });
 
   
-    fetch(`http://localhost:4500/user/${id}`)
+    fetch(`https://cointab-znde.onrender.com/user/${id}`)
       .then((res) => res.json())
       .then((res) => {
         setData1({ ...data1, Name: res.data.name, companyName: res.data.company.name });
@@ -38,7 +38,7 @@ function POST() {
       });
 
  
-    fetch(`http://localhost:4500/post/${id}`)
+    fetch(`https://cointab-znde.onrender.com/post/${id}`)
       .then((res) => res.json())
       .then((res) => {
         if (res.data) {
@@ -55,7 +55,7 @@ function POST() {
 
   const BulkAdd = () => {
     data.forEach((ele) => {
-      fetch("http://localhost:4500/post/add", {
+      fetch("https://cointab-znde.onrender.com/post/add", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -72,7 +72,7 @@ function POST() {
     });
 
 
-    fetch(`http://localhost:4500/post/${id}`)
+    fetch(`https://cointab-znde.onrender.com/post/${id}`)
       .then((res) => res.json())
       .then((res) => {
         if (res.data) {
@@ -87,7 +87,7 @@ function POST() {
   };
 
   const DownloadinExcel=()=>{
-    fetch(`http://localhost:4500/post/export/${id}`)
+    fetch(`https://cointab-znde.onrender.com/post/export/${id}`)
     .then((res) => res.blob())
     .then((blob) => {
       
