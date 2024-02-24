@@ -6,15 +6,17 @@ function Home() {
   const Navigate = useNavigate();
   const [data, setData] = useState([]);
   const [userStatus, setUserStatus] = useState({});
+  const [toggle, setToggle] = useState(true);
 
   const fetchUserData = () => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((res) => res.json())
       .then((res) => {
-        setData(res)
+        setData(res);
+        setToggle(!toggle); // Update toggle to trigger useEffect
       })
       .catch(error => {
-        console.error( error)
+        console.error(error);
       });
   };
 
@@ -28,7 +30,7 @@ function Home() {
         }));
       })
       .catch(error => {
-        console.error( error)
+        console.error(error);
       });
   };
 
@@ -42,14 +44,13 @@ function Home() {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.status==201) {
+        if (data.status === 201) {
           alert("Added to the database");
         }
-        
-        fetchUserData();
+        setToggle(!toggle); // Update toggle to trigger useEffect
       })
       .catch(error => {
-        console.error( error)
+        console.error(error);
       });
   };
 
@@ -63,7 +64,7 @@ function Home() {
         checkUserStatus(ele.id);
       });
     }
-  }, [data]);
+  }, [toggle]); // useEffect triggers when toggle state changes
 
   return (
     <div className='parent-div'>
