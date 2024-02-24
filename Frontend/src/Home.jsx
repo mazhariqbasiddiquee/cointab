@@ -42,7 +42,9 @@ function Home() {
     })
       .then((res) => res.json())
       .then((data) => {
-    
+        if(data.ok){
+          alert("Added to the data base")
+        }
         fetchUserData();
       })
       .catch(error => {
