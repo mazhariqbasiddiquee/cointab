@@ -21,9 +21,7 @@ PostRouter.get("/export/:id", async (req, res) => {
         let {id} = req.params;
         let data = await Post.findAll({where:{userId:id}});
 
-        if (!data||data.length===0) {
-            return res.status(404).json({error:"Data not found"});
-        }
+       
 
       
         const plainData = data.map(instance =>instance.toJSON());
