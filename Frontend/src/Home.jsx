@@ -43,7 +43,7 @@ function Home() {
       });
   };
 
-  const handleAllUserClick = () => {
+  const allUser = () => {
     
       fetch("https://jsonplaceholder.typicode.com/users")
         .then((res) => res.json())
@@ -72,7 +72,7 @@ function Home() {
     <div className='parent-div'>
       <div className='container'>
         <h1>CointabSE-ASSIGNMENT</h1>
-        <button onClick={handleAllUserClick}>All user</button>
+        {data.length==0?<button onClick={allUser}>All user</button>:null}
       </div>
       {data.length > 0 && (
         <div className='content-div'>
