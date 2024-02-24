@@ -8,30 +8,19 @@ function Home() {
   const [userStatus, setUserStatus] = useState({});
   const [toggle, setToggle] = useState(true);
 
-  const fetchUserData = () => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res);
-        setToggle(!toggle); // Update toggle to trigger useEffect
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  };
 
-  const checkUserStatus = (id) => {
-    fetch(`https://cointab-znde.onrender.com/user/${id}`)
-      .then(response => response.json())
-      .then(userData => {
-        setUserStatus(prevStatus => ({
-          ...prevStatus,
-          [id]: !!userData.data
-        }));
-      })
-      .catch(error => {
-        console.error(error);
-      });
+
+  const checkUserStatus = async (id) => {
+    try {
+      const response = await fetch(`https://cointab-znde.onrender.com/user/${id}`);
+      const userData = await response.json();
+      setUserStatus(prevStatus => ({
+        ...prevStatus,
+        [id]: !!userData.data
+      }));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const addUser = (elem) => {
@@ -47,7 +36,7 @@ function Home() {
         if (data.status === 201) {
           alert("Added to the database");
         }
-        setToggle(!toggle); // Update toggle to trigger useEffect
+        setToggle(!toggle); 
       })
       .catch(error => {
         console.error(error);
@@ -55,7 +44,20 @@ function Home() {
   };
 
   const handleAllUserClick = () => {
-    fetchUserData();
+    
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((res) => res.json())
+        .then((res) => {
+          res.forEach((ele) => {
+            checkUserStatus(ele.id);
+          });
+          setData(res);
+          setToggle(!toggle); 
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    
   };
 
   useEffect(() => {
@@ -64,7 +66,7 @@ function Home() {
         checkUserStatus(ele.id);
       });
     }
-  }, [toggle]); // useEffect triggers when toggle state changes
+  }, [toggle]); 
 
   return (
     <div className='parent-div'>
