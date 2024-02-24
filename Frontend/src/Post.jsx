@@ -19,7 +19,7 @@ function POST() {
     fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+     
         setData(res);
       })
       .catch((err) => {
@@ -31,7 +31,7 @@ function POST() {
       .then((res) => res.json())
       .then((res) => {
         setData1({ ...data1, Name: res.data.name, companyName: res.data.company.name });
-        console.log(res, data1);
+      
       })
       .catch((err) => {
         console.log(err);
@@ -64,7 +64,9 @@ function POST() {
       })
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
+          if (res.status==201) {
+            alert("Added to the database");
+          }
         })
         .catch((err) => {
           console.log(err);
