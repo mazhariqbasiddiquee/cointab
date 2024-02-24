@@ -24,7 +24,7 @@ PostRouter.get("/export/:id", async (req, res) => {
        
 
       
-        const plainData = data.map(instance =>instance.toJSON());
+        const plainData = data.map(ele =>ele.toJSON());
 
         const workbook = XLSX.utils.book_new();
         const worksheet = XLSX.utils.json_to_sheet(plainData);
