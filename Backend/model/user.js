@@ -1,7 +1,7 @@
 const sequelize=require("./index")
 const {DataTypes}=require("sequelize")
 
-let User=sequelize.define("Users",{
+let User=sequelize.define("Userschema",{
     id:{
      type:DataTypes.INTEGER,
      allowNull:false,
