@@ -18,33 +18,33 @@ PostRouter.get("/:id",async(req,res)=>{
 
 PostRouter.get("/export/:id", async (req, res) => {
     try {
-        let { id } = req.params;
-        let data = await Post.findAll({ where: { userId: id } });
+        let {id} = req.params;
+        let data = await Post.findAll({where:{userId:id}});
 
-        if (!data || data.length === 0) {
-            return res.status(404).json({ error: "Data not found" });
+        if (!data||data.length===0) {
+            return res.status(404).json({error:"Data not found"});
         }
 
       
-        const plainData = data.map(instance => instance.toJSON());
+        const plainData = data.map(instance =>instance.toJSON());
 
         const workbook = XLSX.utils.book_new();
         const worksheet = XLSX.utils.json_to_sheet(plainData);
         XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
 
         const excelFilePath = 'output.xlsx';
-        XLSX.writeFile(workbook, excelFilePath, { bookType: 'xlsx' });
+        XLSX.writeFile(workbook, excelFilePath, {bookType: 'xlsx' });
 
         res.download(excelFilePath, 'output.xlsx', (err) => {
             if (err) {
-                console.error('Error downloading Excel file:', err);
+                console.error('Error :', err);
                 res.status(500).end();
             } else {
                 fs.unlinkSync(excelFilePath);
             }
         });
     } catch (err) {
-        console.error('Error generating Excel file:', err);
+        console.error('Error:', err);
         res.status(500).end();
     }
 });

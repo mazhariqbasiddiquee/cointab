@@ -94,8 +94,6 @@ function POST() {
     .then((blob) => {
       
         const url = window.URL.createObjectURL(new Blob([blob]));
-
-       
         const a = document.createElement('a');
         a.href = url;
         a.download = 'output.xlsx'; 
@@ -104,7 +102,7 @@ function POST() {
         a.remove();
     })
     .catch((error) => {
-        console.error('Error downloading file:', error);
+        console.error('Error :', error);
     });
     
   }
