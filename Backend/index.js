@@ -8,7 +8,7 @@ require("dotenv").config()
 const cors=require("cors")
 app.use(error)
 app.use(express.json())
-app.use(cors({ origin: [ 'https://cointab-jade.vercel.app',`http://localhost:3000`] }));
+app.use(cors());
 
 
 app.use("/user",UserRouter)
