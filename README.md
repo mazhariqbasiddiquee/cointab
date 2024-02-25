@@ -17,8 +17,14 @@ List out the key features of your application.
 - Rendering data from api
 - Downloading in Excel format
 
+  ![Screenshot (62)](https://github.com/mazhariqbasiddiquee/cointab/assets/121328575/7657d678-674e-4b8a-afb4-269425d973e8)
+
+  ![Screenshot (63)](https://github.com/mazhariqbasiddiquee/cointab/assets/121328575/3709b304-3c76-4b9d-b9ea-6759f79265bc)
+
+  ![Screenshot (64)](https://github.com/mazhariqbasiddiquee/cointab/assets/121328575/415973ac-4421-4fd5-adf1-5e77db32d6e1)
+
 ## Installation & Getting started
-Detailed instructions on how to install, configure, and get the project running. For BE/FS projects, guide the reviewer how to check mongodb schema etc.
+
 
 cd Backend
 npm install
