@@ -8,7 +8,7 @@
 
   .container button{
     width: 90px;
-    height: 35px;
+    height: 50px;
   }
 
   .table {
@@ -20,6 +20,14 @@
   .table th,
   .table td {
     width: 16.67%; 
-    padding: 8px; 
-    border: 1px solid black; 
+   
+   
   }
+
+  .table td{
+    border-top:1px solid lightcyan ;
+    border-bottom: 1px solid lightcyan;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
