@@ -31,13 +31,18 @@ npm run start
 ## API Endpoints
 
 GET  "/user"  : get all the data of the user
+
 GET  /user/:id  : get data of the specific user
+
 Post  /user/add  : Add data of the user
 
 
 GET  "/post"  : get all the post
+
 GET  /post/:id  : get post of the specific user
+
 Post  /post/add  : Add post of the specific user
+
 GET   /user/export/:id  :Download post of specific user
 
 
