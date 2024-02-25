@@ -76,7 +76,7 @@ function Home() {
       </div>
       {data.length > 0 && (
         <div className='content-div'>
-          <table className="table">
+          <table className="table"  >
             <thead>
               <tr>
                 <th>Name</th>

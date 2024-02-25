@@ -21,3 +21,4 @@ app.listen(process.env.PORT,async(err)=>{
     await sequelize.sync()
     console.log("server is running on port 4500")
 })
+

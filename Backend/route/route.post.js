@@ -20,12 +20,7 @@ PostRouter.get("/export/:id", async (req, res) => {
     try {
         let {id} = req.params;
         let data = await Post.findAll({where:{userId:id}});
-
-       
-
-      
         const plainData = data.map(ele =>ele.toJSON());
-
         const workbook = XLSX.utils.book_new();
         const worksheet = XLSX.utils.json_to_sheet(plainData);
         XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
