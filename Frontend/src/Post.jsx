@@ -64,15 +64,18 @@ function POST() {
       })
         .then((res) => res.json())
         .then((res) => {
-          if (res.status==201) {
-            alert("Added to the database");
-          }
+          
+            
+          
         })
         .catch((err) => {
           console.log(err);
         });
-    });
 
+       
+    });
+    
+    alert("Added to the database");
 
     fetch(`https://cointab-znde.onrender.com/post/${id}`)
       .then((res) => res.json())

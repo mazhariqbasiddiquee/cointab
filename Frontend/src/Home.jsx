@@ -33,9 +33,10 @@ function Home() {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.status === 201) {
+        console.log(data)
+    
           alert("Added to the database");
-        }
+        
         setToggle(!toggle); 
       })
       .catch(error => {
