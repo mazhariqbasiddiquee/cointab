@@ -3,7 +3,7 @@ const {DataTypes}=require("sequelize")
 
 
 
-let Post=sequelize.define("Postschema",{
+let Post=sequelize.define("Postdata",{
     id:{
      type:DataTypes.INTEGER,
      allowNull:false,
@@ -28,6 +28,6 @@ let Post=sequelize.define("Postschema",{
 
 )
 
-module.exports=Post
+
 
 module.exports=Post
