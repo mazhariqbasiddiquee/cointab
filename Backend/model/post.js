@@ -3,7 +3,7 @@ const {DataTypes}=require("sequelize")
 
 
 
-let Post=sequelize.define("Postdata",{
+let Post=sequelize.define("Postdatas",{
     id:{
      type:DataTypes.INTEGER,
      allowNull:false,

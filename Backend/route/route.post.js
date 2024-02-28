@@ -27,7 +27,7 @@ PostRouter.get("/export/:id", async (req, res) => {
 
         const excelFilePath = 'output.xlsx';
         XLSX.writeFile(workbook, excelFilePath, {bookType: 'xlsx' });
-
+     
         res.download(excelFilePath, 'output.xlsx', (err) => {
             if (err) {
                 console.error('Error :', err);
